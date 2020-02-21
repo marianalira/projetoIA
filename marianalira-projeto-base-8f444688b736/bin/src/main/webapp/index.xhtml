@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset-UTF-8" />
+		<title>JSF Example Pagina Inicial</title>
+	</h:head>
+	
+	<body>
+		<h2>Secretaria de Estado de Transparencia e Controle</h2>
+		
+<!-- 		<p:panelGrid columns="2"> -->
+<!-- 			<p:outputLabel value="Nome:"/> -->
+<!-- 			<p:inputText/> -->
+			
+<!-- 			<p:outputLabel for="mask" value="Data:" /> -->
+<!--         	<p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" /> -->
+<!-- 		</p:panelGrid> -->
+		<h:form>
+			<p:dataTable value="#{orgaobean.orgaos}" var="org">
+				<f:facet name="header">
+					Lista de Órgãos
+				</f:facet>
+				
+				<p:column headerText="Codigo" sortBy="#{org.codOrgao}">
+					<h:outputText value="#{org.codOrgao}" />
+				</p:column>
+				<p:column headerText="Sigla" sortBy="#{org.sgOrgao}">
+					<h:outputText value="#{org.sgOrgao}" />
+				</p:column>
+				<p:column headerText="Descrição" sortBy="#{org.dsOrgao}">
+					<h:outputText value="#{org.dsOrgao}" />
+				</p:column>
+				<f:facet name="footer">
+					Total de #{fn:length(orgaobean.orgaos)} órgãos
+				</f:facet>
+			</p:dataTable>
+		</h:form>
+	</body>
+</html>

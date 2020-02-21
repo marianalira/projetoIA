@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+
+	<ui:composition template="/templates/templatePadrao.xhtml" >
+		
+		<ui:define name="content">
+		
+			<h:form styleClass="items-start">
+				<h:panelGroup styleClass="box column-nowrap" style="width: 80vw;">
+				
+		    			<h:outputText value="Grade" style="font-size:15pt; text-decoration:none;  font-style:italic; margin:5px auto;"></h:outputText>
+		   				
+		   				<h:panelGroup styleClass="row-wrap justify-around" style="width: 60vw; margin:15px auto;">
+			   				<p:outputLabel for="solucao" value="Soluções Possíveis: "/>
+							 <p:selectOneMenu id="solucao"  value="#{horarioBean.solucaoSelecionada}" style="width:5vw;">
+								<f:selectItems value="#{horarioBean.listSolucoes}"/>
+							</p:selectOneMenu>
+							
+							<p:commandLink class="botaoLink" actionListener="#{horarioBean.mostrar()}" update="tabela">
+								<h:outputText value="Verificar Solução" />						
+							</p:commandLink>
+						</h:panelGroup>
+						
+						<p:dataTable id="tabela" style="width: 60vw; margin: 15px auto" class="custom" value="#{horarioBean.listHorarioGrade}" var="horario" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+					    	 rows="5" resizableColumns="true" >
+					    	 
+					    	 	<p:column headerText="Horário">
+							        <h:outputText  value="#{horario.codigo}" />
+							    </p:column>
+								    
+							    <p:column headerText="Dia">
+							        <h:outputText  value="#{horario.dia}" />
+							    </p:column>
+							    
+							    <p:column headerText="Código da Turma">
+							        <h:outputText  value="#{horario.turma.codTurma}" />
+							    </p:column>
+							    
+							    <p:column headerText="Disciplina">
+							        <h:outputText  value="#{horario.turma.disciplina.nome}" />
+							    </p:column>
+				
+							</p:dataTable>		
+							
+		    	</h:panelGroup>		    			
+			</h:form>
+		
+		
+		</ui:define>
+	
+	</ui:composition>
+
+</h:body>
+
+</html>

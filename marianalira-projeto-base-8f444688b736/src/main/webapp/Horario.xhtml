@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+
+	<ui:composition template="/templates/templatePadrao.xhtml" >
+		
+		<ui:define name="content">
+		
+			<h:form styleClass="items-start">
+				<h:panelGroup styleClass="box column-nowrap" style="width: 80vw;">
+				
+		    			<h:outputText value="Informações para Gerar Grade" style="font-size:15pt; text-decoration:none;  font-style:italic; margin:auto;"></h:outputText>
+		   
+		    				<h:panelGroup styleClass="box column-nowrap" style="margin:15px auto;">
+		    					
+		    					<h:panelGroup styleClass="row-wrap justify-around" style="margin: 10px auto 10px auto;" >
+				    				<p:outputLabel for="professor" value="Professor "/>
+						    		<p:selectOneMenu id="professor"  value="#{horarioBean.professor}" style="width:20vw;">
+										<f:selectItems value="#{horarioBean.listProfessor}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.matricula}"/>
+									</p:selectOneMenu>
+										
+									<p:commandLink class="botaoLink" actionListener="#{horarioBean.addProfessor()}" update="tabelaprof">
+										<h:outputText value="Selecionar Professor" />
+										<i class="fa fa-plus" aria-hidden="true"></i>							
+									</p:commandLink>
+								</h:panelGroup>
+									
+									<p:outputLabel for="desc" value="Descrição da Grade "/>
+					    			<p:inputText id="desc" value="#{horarioBean.descricao}" ></p:inputText>
+					    			
+							</h:panelGroup>	
+							
+							<h:panelGroup styleClass="box row-wrap justify-around" style="width:50vw; margin: 15px auto;">
+								<p:outputLabel for="turmas" value="Turmas "/>
+						    		<p:selectOneMenu id="turmas"  value="#{horarioBean.cod_turma}" >
+						    			<f:selectItems value="#{turmaBean.listTurma}" var="turma" itemLabel = "#{turma.codTurma}" itemValue = "#{turma.codTurma}" />
+									</p:selectOneMenu>
+									
+									<p:commandLink class="botaoLink" action="#{horarioBean.addObrigatoria()}" update="tabelaO" >
+									<h:outputText value="Tornar Obrigatoria" />
+									<f:setPropertyActionListener target="#{horarioBean.listTurma}" value="#{turmaBean.listTurma}" />
+									<i class="fa fa-plus" aria-hidden="true"></i>							
+									</p:commandLink>
+									
+									<p:commandLink class="botaoLink" action="#{horarioBean.addPredefinida()}" update="tabelaP">
+									<h:outputText value="Tornar Pre-definida" />
+									<f:setPropertyActionListener target="#{horarioBean.listTurma}" value="#{turmaBean.listTurma}" />
+									<i class="fa fa-plus" aria-hidden="true"></i>							
+									</p:commandLink>
+							</h:panelGroup>
+							
+							<h:panelGroup styleClass="row-wrap justify-around" style="margin: 15px auto;">
+							<p:dataTable id="tabelaO" class="custom"  style="width: 30vw;"  value="#{horarioBean.listturmasObrigatorias}" var="disciplina" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+				    			 rows="2" resizableColumns="true" >
+							    
+							    <p:column headerText="Disciplinas Obrigatorias">
+							        <h:outputText  value="#{disciplina.codTurma}" />
+							    </p:column>
+						       
+							</p:dataTable>
+
+							<p:dataTable id="tabelaP" style="width: 30vw" class="custom" value="#{horarioBean.listturmasPredefinidas}" var="disci" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+					    	 rows="2" resizableColumns="true" >
+								    
+							    <p:column headerText="Disciplinas Pré-definidas">
+							        <h:outputText  value="#{disci.codTurma}" />
+							    </p:column>
+							      
+							</p:dataTable>
+							
+							<p:dataTable id="tabelaprof" style="width: 30vw" class="custom" value="#{horarioBean.listProfessorSelecionado}" var="professor" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+					    	 rows="2" resizableColumns="true" >
+								    
+							    <p:column headerText="Nome do Professor">
+							        <h:outputText  value="#{professor.nome}" />
+							    </p:column>
+							      
+							</p:dataTable>
+						</h:panelGroup>	
+			
+						<h:panelGroup styleClass="row-wrap justify-around">
+							<h:commandLink class="botaoLink" action="#{horarioBean.gerarGrade()}" style="width: 45%; margin:0px;">
+								<h:outputText value="Gerar Grade" style="margin:auto;"/>
+							</h:commandLink>
+						</h:panelGroup>
+							
+		    	</h:panelGroup>		    			
+			</h:form>
+		
+		
+		</ui:define>
+	
+	</ui:composition>
+
+</h:body>
+
+</html>

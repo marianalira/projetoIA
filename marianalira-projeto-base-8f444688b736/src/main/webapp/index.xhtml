@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+
+	<ui:composition template="/templates/templatePadrao.xhtml" >
+		
+		<ui:define name="content">
+		
+			<h:panelGroup styleClass="column-nowrap" >
+	    		
+		   		<h:panelGroup  styleClass="organize row-wrap justify-around" style="margin-top: 25px;">
+					<h:form>
+						<p:commandLink action="Professores.xhtml" style="text-decoration:none;">
+							<h:panelGroup styleClass="quadro">
+								<i class="fa fa-users fa-3x" aria-hidden="true"></i>
+								<h:outputText value="Gerenciar Professores"/>
+							</h:panelGroup>
+					    </p:commandLink>
+					    
+					    <p:commandLink action="Disciplina.xhtml" style="text-decoration:none;">
+							<h:panelGroup styleClass="quadro">
+								<i class="fa fa-book fa-3x" aria-hidden="true"></i>
+								<h:outputText value="Gerenciar Disciplinas"/>
+							</h:panelGroup>
+					    </p:commandLink>
+					    
+					    
+				    </h:form>
+			    
+			    </h:panelGroup>
+		    
+			    <h:panelGroup  styleClass="organize row-wrap justify-around" style="margin-bottom: 50px;">
+					<h:form>
+						<p:commandLink action="Turmas.xhtml" style="text-decoration:none;">
+							<h:panelGroup styleClass="quadro">
+								<h:outputText value="Gerenciar Turmas"/>
+							</h:panelGroup>
+					    </p:commandLink>
+					   
+				    </h:form>
+			    
+			    </h:panelGroup>
+		    
+		</h:panelGroup>
+		
+		</ui:define>
+	
+	</ui:composition>
+
+</h:body>
+
+</html>

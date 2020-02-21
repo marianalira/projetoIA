@@ -1,0 +1,44 @@
+/* *********************************** */
+/* ******* Menu Acessibilidade ******* */
+/* *********************************** */
+
+
+
+
+
+
+
+#versionBar {
+	background: #4f4f4f;
+	color: gray;
+}
+
+
+
+#headerMenu {
+	font-size: 110%;
+	padding: 2px 5px;
+	margin:0px;	
+	list-style:none;
+}
+
+#headerMenu  li { display: inline; }
+
+#headerMenu li a {
+	min-height: 45px;
+	padding: 7px 17px;
+	
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	
+	align-items: center;
+ 
+	/* visual do link */	
+	color: white;
+	text-decoration: none;
+}
+
+#headerMenu li a:hover {
+	font-weight: bold;
+}

@@ -1,0 +1,170 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+
+body {
+	font-family: prometo-light, Helvetica, Arial, sans-serif;
+	font-stily: italic;
+	
+	color: #404040;
+	margin: 0px;
+	
+	background: #A9A9A9;
+	background-position: top;
+	background-size: auto 100%;
+	background-attachment: fixed;
+}
+
+html, body {
+    overflow: auto;
+    height:100%
+}
+
+#content {
+	height: 100%;
+}
+
+h1 {
+	color: #0040aa;
+}
+
+
+
+
+/* ********************************** */
+/* ************ FORM BOX ************ */
+/* ********************************** */
+
+.box {
+	background: white;
+	border: 1px solid #d4d4d4;
+	
+	padding: 1.5vw;
+	margin: 1vw 5vw;
+	
+	width: -webkit-max-content;
+	width: -moz-max-content;
+	width: max-content;
+	height: -webkit-max-content;
+	height: -moz-max-content;
+	height: max-content;
+}
+
+
+/* ********************************** */
+/* ************* BOTÕES ************* */
+/* ********************************** */
+
+.botaoLink {
+	display: -ms-flexbox; 
+	display: -moz-flexbox;
+	display: -webkit-flex;
+	display: -o-flex;
+	display: flex;
+	
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	
+	-ms-flex-item-align: end;
+	align-self: flex-end;
+		
+	text-decoration: none; 
+	color: white !important;
+	font-weight: bold;
+	padding: 10px;
+	
+	background-color: #A9A9A9;
+	border-radius: 3px;
+	margin: 0;
+	   
+	width: -webkit-fit-content;
+	width: fit-content;
+	width: -moz-fit-content;
+	
+	height: -webkit-fit-content;
+	height: fit-content;
+	height: -moz-fit-content;
+}
+
+.botaoLink > .fa {
+	margin-left: 5px;
+}
+
+
+/* ********************************** */
+/* ********* QUADRO BRACKET ********* */
+/* ********************************** */
+
+.quadro {
+    margin: 1vh 0;
+    display: -ms-flexbox;
+    display: -moz-flexbox;
+    display: -webkit-flex;
+    display: -o-flex;
+    display: flex;
+    
+    -moz-flex-flow: column nowrap;
+    -ms-flex-flow: column nowrap;
+    -o-flex-flow: column nowrap;
+    -webkit-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    -o-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    align-content: center;
+    
+    text-decoration: none;
+    color: #A9A9A9;
+    
+    font-size: 25px;
+    font-style: italic; 
+    font-weight: 100;
+    text-align: center;
+    text-align-last: center;
+    height: 200px;
+    width: 200px;
+}
+
+.quadro, .quadro li, .quadro a {
+    background-color: white !important;
+    color: #A9A9A9 !important;
+    text-decoration: none;
+}
+
+.quadro:hover {
+	background-color: #fff0 !important;
+	
+	-webkit-transition: background-color 500ms ease-out;
+    -ms-transition: background-color 500ms ease-out;
+    transition: background-color 500ms ease-out;
+    text-decoration none;
+    
+    -webkit-text-fill-color: white;
+}
+
+.quadro {
+    padding: 1em;
+    position: relative;
+	margin: .2em;
+	text-decoration: none;
+}
+
+.quadro:after, .quadro:before {
+    border: .2em solid white; 
+    bottom: 0;    
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 10%;
+}
+.quadro:after {
+    border-left: none;
+    right: 0;
+}
+.quadro:before {
+    border-right: none;
+    left: 0;
+}

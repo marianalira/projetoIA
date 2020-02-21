@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="transparencia">
+	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+	<class>br.gov.se.setc.transparencia.model.Orgao</class>
+		<properties>
+			<property name="hibernate.ejb.cfgfile" value="hibernate.cfg.xml"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+			<property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
+			<property name="hibernate.connection.url" value="jdbc:Oracle:thin:@10.1.192.89:1522:PROBDEFD"/>
+			<property name="hibernate.default_schema" value="ODS"/>
+			<property name="hibernate.connection.username" value="aps_sefaz_cge"/>
+			<property name="hibernate.connection.password" value="aps_sefaz_cge@pro"/>
+		</properties>
+	</persistence-unit>
+</persistence>

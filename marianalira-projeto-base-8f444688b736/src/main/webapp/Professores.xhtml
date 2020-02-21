@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+
+	<ui:composition template="/templates/templatePadrao.xhtml" >
+		
+		<ui:define name="content">
+		
+			<h:form styleClass="items-start">
+				<h:panelGroup styleClass="box column-nowrap">
+						<h:outputText value="Informações do Professor" style="font-size:15pt; text-decoration:none;  font-style:italic; margin:auto;"></h:outputText>
+						
+		    			<h:panelGroup styleClass="box row-wrap justify-around" style="margin:auto">
+		    			
+			    			<p:outputLabel for="nomeProfessor" value="Nome "/>
+				    		<p:inputText id="nomeProfessor" value="#{professorBean.nome}" style="margin-right:15px;"></p:inputText>
+				    		
+				    		<p:outputLabel for="codigoProfessor" value="Código "/>
+				    		<p:inputText id="codigoProfessor" value="#{professorBean.codigo}"></p:inputText>
+				    		
+				    		<p:outputLabel for="carga" value="Carga Horária "/>
+				    		<p:inputText id="carga" value="#{professorBean.cargahoraria}"></p:inputText>
+				    	</h:panelGroup>							
+							
+						<h:panelGroup styleClass="box column-nowrap">	
+			    			<h:panelGroup styleClass="box row-wrap justify-around">
+				    			<p:outputLabel for="disc" value="Disciplinas a ministrar "/>
+					    		<p:selectOneMenu id="disc"  value="#{professorBean.disciplinaSelecionada}" >
+									<f:selectItems value="#{professorBean.listDisciplina}" var="disciplina" itemLabel="#{disciplina.nome}" itemValue="#{disciplina.codigo}"/>
+								</p:selectOneMenu>
+								
+								<p:commandLink class="botaoLink" action="#{professorBean.addDisciplina()}" update="tabelaD" >
+								<h:outputText value="Adicionar" />
+								<i class="fa fa-plus" aria-hidden="true"></i>							
+								</p:commandLink>	
+							</h:panelGroup>	
+						
+							
+			    			<h:panelGroup styleClass="box row-wrap justify-around">
+				    			<p:outputLabel for="horario" value="Preferência de Horários "/>
+					    		<p:selectOneMenu id="horario"  value="#{professorBean.horarioSelecionado}" >
+					    			<f:selectItem itemLabel = "2N12" itemValue = "2N12" />
+					    			<f:selectItem itemLabel = "2N34" itemValue = "2N34" />
+					    			<f:selectItem itemLabel = "3N12" itemValue = "3N12" />
+					    			<f:selectItem itemLabel = "3N34" itemValue = "3N34" />
+					    			<f:selectItem itemLabel = "4N12" itemValue = "4N12" />
+					    			<f:selectItem itemLabel = "4N34" itemValue = "4N34" />
+					    			<f:selectItem itemLabel = "5N12" itemValue = "5N12" />
+					    			<f:selectItem itemLabel = "5N34" itemValue = "5N34" />
+					    			<f:selectItem itemLabel = "6N12" itemValue = "6N12" />
+					    			<f:selectItem itemLabel = "6N34" itemValue = "6N34" />
+								</p:selectOneMenu>
+								
+								<p:commandLink class="botaoLink" action="#{professorBean.addHorario()}" update="tabelaH">
+								<h:outputText value="Adicionar" />
+								<i class="fa fa-plus" aria-hidden="true"></i>							
+								</p:commandLink>
+							</h:panelGroup>	
+						</h:panelGroup>
+						
+						
+						<h:panelGroup styleClass="row-wrap justify-around" >
+							<p:dataTable id="tabelaD" class="custom"  style="width: 30vw; height: 10vw"  value="#{professorBean.listDisciplinasEscolhidas}" var="disciplina" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+				    			 rows="2" resizableColumns="true" >
+							    
+							    <p:column headerText="Disciplinas Selecionadas">
+							        <h:outputText  value="#{disciplina.nome}" />
+							    </p:column>
+						       
+							</p:dataTable>
+
+							<p:dataTable id="tabelaH" style="width: 30vw" class="custom" value="#{professorBean.listHorariosEscolhidos}" var="horario" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+					    	 rows="2" resizableColumns="true" >
+								    
+							    <p:column headerText="Horários Selecionados">
+							        <h:outputText  value="#{horario.codigo}" />
+							    </p:column>
+							      
+							</p:dataTable>
+						</h:panelGroup>
+						
+						<h:panelGroup styleClass="row-wrap justify-around">
+							<h:commandLink class="botaoLink" actionListener="#{professorBean.saveProfessor()}" style="width: 45%; margin:0px;">
+								<h:outputText value="Salvar" style="margin:auto;"/>
+							</h:commandLink>
+							<h:commandLink class="botaoLink" action="/index.html" style="width: 45%; margin:0px;">
+								<h:outputText value="Cancelar" style="margin:auto;"/>
+							</h:commandLink>
+						</h:panelGroup>
+		    </h:panelGroup>	
+		    	    			
+			</h:form>
+		
+		
+		</ui:define>
+	
+	</ui:composition>
+
+</h:body>
+
+</html>

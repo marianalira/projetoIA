@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+
+	<ui:composition template="/templates/templatePadrao.xhtml" >
+		
+		<ui:define name="content">
+		
+			<h:form styleClass="items-start">
+				<h:panelGroup styleClass="box column-nowrap" style="width: 40vw;">
+				
+		    			<h:outputText value="Informações de Turma" style="font-size:15pt; text-decoration:none;  font-style:italic; margin:auto;"></h:outputText>
+		    			<h:panelGroup styleClass="box column-nowrap" style="width: 30vw;">
+		    			
+			    			<p:outputLabel for="professor" value="Professor "/>
+					    		<p:selectOneMenu id="professor"  value="#{turmaBean.professor}" style="width:20vw;">
+									<f:selectItems value="#{turmaBean.listProfessor}" var="prof" itemLabel="#{prof.nome}" itemValue="#{prof.matricula}"/>
+								</p:selectOneMenu>
+			
+				    		<p:outputLabel for="disc" value="Disciplina "/>
+					    		<p:selectOneMenu id="disc"  value="#{turmaBean.disciplina}" >
+									<f:selectItems value="#{turmaBean.listDisciplina}" var="disciplina" itemLabel="#{disciplina.nome}" itemValue="#{disciplina.codigo}"/>
+								</p:selectOneMenu>
+								
+							<p:outputLabel for="codigodaTurma" value="Código da Turma "/>
+				    			<p:inputText id="codigodaTurma" value="#{turmaBean.codigodaTurma}" ></p:inputText>
+				    		
+							<h:panelGroup styleClass="box row-wrap justify-around">
+								<p:outputLabel for="horario" value="Horários "/>
+						    		<p:selectOneMenu id="horario"  value="#{turmaBean.horario}" >
+						    			<f:selectItem itemLabel = "" itemValue ="null"></f:selectItem>
+						    			<f:selectItem itemLabel = "2N12" itemValue = "2N12" />
+						    			<f:selectItem itemLabel = "2N34" itemValue = "2N34" />
+						    			<f:selectItem itemLabel = "3N12" itemValue = "3N12" />
+						    			<f:selectItem itemLabel = "3N34" itemValue = "3N34" />
+						    			<f:selectItem itemLabel = "4N12" itemValue = "4N12" />
+						    			<f:selectItem itemLabel = "4N34" itemValue = "4N34" />
+						    			<f:selectItem itemLabel = "5N12" itemValue = "5N12" />
+						    			<f:selectItem itemLabel = "5N34" itemValue = "5N34" />
+						    			<f:selectItem itemLabel = "6N12" itemValue = "6N12" />
+						    			<f:selectItem itemLabel = "6N34" itemValue = "6N34" />
+									</p:selectOneMenu>
+									<p:commandLink class="botaoLink" action="#{turmaBean.addHorario()}" update="tabelaH">
+									<h:outputText value="Adicionar" />
+									<i class="fa fa-plus" aria-hidden="true"></i>							
+									</p:commandLink>
+							</h:panelGroup>
+							
+							<p:dataTable id="tabelaH" style="width: 30vw" class="custom" value="#{turmaBean.listHorariosEscolhidos}" var="horario" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+					    	 rows="2" resizableColumns="true" >
+								    
+							    <p:column headerText="Horários Selecionados">
+							        <h:outputText  value="#{horario.codigo}" />
+							    </p:column>
+							      
+							</p:dataTable>	
+				    	</h:panelGroup>							
+		
+						<h:panelGroup styleClass="row-wrap justify-around">
+							<h:commandLink class="botaoLink" actionListener="#{turmaBean.saveTurma()}" style="width: 45%; margin:0px;">
+								<h:outputText value="Salvar" style="margin:auto;"/>
+							</h:commandLink>
+							<h:commandLink class="botaoLink" action="/Horario.xhtml" style="width: 45%; margin:0px;">
+								<h:outputText value="Avançar" style="margin:auto;"/>
+							</h:commandLink>
+						</h:panelGroup>
+		    </h:panelGroup>		    			
+			</h:form>
+		
+		
+		</ui:define>
+	
+	</ui:composition>
+
+</h:body>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<!-- Removido por causa de um erro no JNDI parsing -->
+<!--  <session-factory name="transparencia"> -->
+ <session-factory>
+  <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+  <property name="hibernate.connection.url">jdbc:Oracle:thin:@10.1.192.89:1522:PROBDEFD</property>
+  <property name="hibernate.connection.username">aps_sefaz_cge</property>
+  <property name="hibernate.connection.password">aps_sefaz_cge@pro</property>
+  <property name="hibernate.default_schema">ODS</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>  
+  <property name="hibernate.show_sql">true</property>
+
+<!-- 	<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> -->
+<!--   <property name="hibernate.c3p0.min_size">5</property> -->
+<!--   <property name="hibernate.c3p0.max_size">80</property> -->
+<!--   <property name="hibernate.c3p0.timeout">1200</property> -->
+<!--   <property name="hibernate.c3p0.idle_test_period">300</property> -->
+
+  <mapping package="br.gov.se.setc.transparencia.model"/>
+  <mapping class="br.gov.se.setc.transparencia.model.Orgao"/>
+ </session-factory>
+</hibernate-configuration>
